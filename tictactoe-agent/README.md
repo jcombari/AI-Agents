@@ -28,3 +28,9 @@ Soporta partidas IA vs IA para demostración.
 
    ```bash
    cd tictactoe-agent
+
+2. Make sure you have Python 3 installed:
+
+   ```bash
+   python --version
+
