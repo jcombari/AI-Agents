@@ -39,3 +39,10 @@ Soporta partidas IA vs IA para demostración.
    ```bash
    python main.py
 
+4. Choose the game mode when prompted:
+
+Select game mode:
+1. Human vs AI
+2. AI vs AI
+
+
