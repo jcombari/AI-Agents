@@ -34,3 +34,8 @@ Soporta partidas IA vs IA para demostración.
    ```bash
    python --version
 
+3. Run the game:
+
+   ```bash
+   python main.py
+
