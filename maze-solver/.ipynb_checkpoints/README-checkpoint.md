@@ -1,22 +1,26 @@
 # 🧭 Maze Solver Agent / Agente para Resolver Laberintos
 
-An intelligent agent that navigates mazes using the A* pathfinding algorithm. Coming soon: reinforcement learning with Q-learning for adaptive maze solving.
+An intelligent agent that navigates dynamic mazes using the A* pathfinding algorithm, adapting to both static and moving obstacles. The agent replans its path dynamically to reach the goal while avoiding collisions with moving obstacles.
 
-Un agente inteligente que navega laberintos utilizando el algoritmo de búsqueda A*. Próximamente: aprendizaje por refuerzo con Q-learning para resolver laberintos de forma adaptativa.
+Un agente inteligente que navega laberintos dinámicos utilizando el algoritmo de búsqueda A*, adaptándose a obstáculos estáticos y móviles. El agente replantea su ruta de forma dinámica para alcanzar la meta evitando colisiones.
 
 ---
 
 ## ✅ Features / Características
 
-- Uses A* algorithm to find the shortest path through the maze  
-- Maze represented as a simple matrix for easy modification  
-- Step-by-step output showing the agent's path  
-- Planned: Q-learning agent that learns optimal paths by trial and error
+- Uses A* algorithm to find the shortest path from start (`S`) to goal (`G`) in a maze represented as a matrix  
+- Maze includes static obstacles (`1`) and dynamic obstacles that move randomly each step  
+- Agent perceives free neighboring cells and replans path whenever obstacles block the current route  
+- Step-by-step animation in the terminal showing agent movement (`A`)  
+- Limits the maximum number of steps to prevent infinite loops  
+- Maze and obstacle parameters (size, density) configurable for flexible testing
 
-- Utiliza el algoritmo A* para encontrar la ruta más corta en el laberinto  
-- Laberinto representado como matriz simple para fácil modificación  
-- Salida paso a paso mostrando la ruta del agente  
-- Próximamente: agente Q-learning que aprende rutas óptimas por prueba y error
+- Utiliza el algoritmo A* para encontrar la ruta más corta desde inicio (`S`) hasta meta (`G`) en un laberinto representado como matriz  
+- Laberinto incluye obstáculos estáticos (`1`) y obstáculos dinámicos que se mueven aleatoriamente en cada paso  
+- El agente percibe las celdas libres vecinas y replantea la ruta cuando los obstáculos bloquean el camino actual  
+- Animación paso a paso en la terminal mostrando el movimiento del agente (`A`)  
+- Limita el número máximo de pasos para evitar bucles infinitos  
+- Parámetros del laberinto y obstáculos configurables para pruebas variadas
 
 ---
 
@@ -24,30 +28,26 @@ Un agente inteligente que navega laberintos utilizando el algoritmo de búsqueda
 
 1. Open a terminal and navigate to the project folder:
 
-        cd maze-solver
+       cd maze-solver
 
 2. Verify you have Python 3 installed:
 
-        python --version
+       python --version
 
-3. Run the agent:
+3. Run the main program:
 
-        python main.py
+       python main.py
 
-4. Observe the output showing the path found by the agent:
+4. Watch the agent move step-by-step through the maze adapting to moving obstacles.
 
-        Path found:
-        (0, 0)
-        (0, 1)
-        (1, 1)
-        ...
+5. Customize maze size and obstacle density inside `maze.py` or the start/goal positions as needed.
 
-5. Customize the maze layout inside `main.py` to test different mazes. Use the legend:
+6. Maze legend:
 
-        S = Start
-        G = Goal
-        0 = Free path
-        1 = Wall
+       S = Start position  
+       G = Goal position  
+       0 = Free path  
+       1 = Wall or obstacle (static or dynamic)
 
 ---
 
@@ -55,42 +55,38 @@ Un agente inteligente que navega laberintos utilizando el algoritmo de búsqueda
 
 This agent:
 
-- Perceives the maze environment  
-- Uses A* to evaluate and select optimal paths  
-- Acts by moving step-by-step towards the goal  
-- Seeks to maximize efficiency by minimizing path length
+- Continuously perceives its environment, including moving obstacles  
+- Uses heuristic search (A*) to dynamically plan the shortest path  
+- Acts by moving one step at a time, replanning when the environment changes  
+- Demonstrates autonomy and rationality by adapting its decisions instead of following fixed rules
 
 Este agente:
 
-- Percibe el entorno del laberinto  
-- Usa A* para evaluar y seleccionar rutas óptimas  
-- Actúa moviéndose paso a paso hacia la meta  
-- Busca maximizar la eficiencia minimizando la longitud de la ruta
-
-It is autonomous and rational — planning ahead and adapting its decisions dynamically rather than following a fixed script.
-
-Es autónomo y racional — planea con anticipación y adapta sus decisiones dinámicamente, no sigue un guion fijo.
+- Percibe continuamente su entorno, incluyendo obstáculos móviles  
+- Usa búsqueda heurística (A*) para planificar dinámicamente la ruta más corta  
+- Actúa moviéndose paso a paso, replanteando la ruta cuando el entorno cambia  
+- Demuestra autonomía y racionalidad adaptando sus decisiones en lugar de seguir reglas fijas
 
 ---
 
 ## 🆚 Difference from a normal program / Diferencia con un programa tradicional
 
-- Traditional programs follow predefined sequences  
-- This agent dynamically evaluates the environment and plans paths accordingly
+- Traditional programs execute predetermined sequences without adapting  
+- This agent evaluates the maze state at each step and replans paths accordingly, showing adaptive behavior
 
-- Los programas tradicionales siguen secuencias predefinidas  
-- Este agente evalúa dinámicamente el entorno y planifica rutas acorde a ello
+- Los programas tradicionales ejecutan secuencias predefinidas sin adaptarse  
+- Este agente evalúa el estado del laberinto en cada paso y replantea rutas, mostrando comportamiento adaptativo
 
 ---
 
 ## 📂 Project files / Archivos del proyecto
 
-| File             | Description                     | Descripción                         |
-|------------------|---------------------------------|-----------------------------------|
-| `main.py`        | Maze setup and agent execution   | Configuración del laberinto y ejecución del agente |
-| `astar_agent.py` | A* pathfinding algorithm         | Algoritmo de búsqueda A*           |
-| `maze.py`        | Maze representation and helpers | Representación del laberinto y funciones auxiliares |
-| `README.md`      | This guide                      | Esta guía                         |
+| File             | Description                          | Descripción                                |
+|------------------|------------------------------------|--------------------------------------------|
+| `main.py`        | Maze initialization, agent loop, and visualization | Inicialización del laberinto, ciclo del agente y visualización |
+| `astar_agent.py` | A* search algorithm implementation | Implementación del algoritmo de búsqueda A* |
+| `maze.py`        | Maze representation, obstacle generation, and movement | Representación del laberinto, generación y movimiento de obstáculos |
+| `README.md`      | Project guide                      | Guía del proyecto                          |
 
 ---
 
@@ -100,5 +96,5 @@ Es autónomo y racional — planea con anticipación y adapta sus decisiones din
 
 ---
 
-Enjoy exploring maze-solving AI techniques! 🤖🧭  
-¡Disfruta explorando técnicas de IA para resolver laberintos!
+Enjoy exploring maze-solving AI techniques with dynamic environments! 🤖🧭  
+¡Disfruta explorando técnicas de IA para resolver laberintos con entornos dinámicos!
