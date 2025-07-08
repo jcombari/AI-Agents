@@ -88,6 +88,9 @@ class Maze:
         # Update dynamic obstacles set with new positions
         self.dynamic_obstacles = new_positions
 
+        # Uncomment to debug dynamic obstacle movement:
+        # print(f"[DEBUG] Dynamic obstacles moved to: {self.dynamic_obstacles}")
+
     def get_neighbors(self, pos, consider_walls=False):
         """
         Return list of adjacent neighbors (up/down/left/right) of a given position.
