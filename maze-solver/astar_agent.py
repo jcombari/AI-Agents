@@ -23,6 +23,7 @@ class Agent:
         This simulates limited sensing of the environment.
         """
         neighbors = self.maze.get_neighbors(self.position)
+        print(f"[DEBUG] Perceiving neighbors at position {self.position}: {neighbors}")
         return neighbors
 
     def a_star_search(self):
@@ -33,6 +34,8 @@ class Agent:
         start = self.position
         goal = self.maze.goal
 
+        print(f"[DEBUG] Starting A* search from {start} to {goal}")
+
         open_set = []
         # Heap element: (estimated total cost, cost so far, current position, path list)
         heapq.heappush(open_set, (0 + self.heuristic(start, goal), 0, start, [start]))
@@ -41,26 +44,33 @@ class Agent:
 
         while open_set:
             est_total_cost, cost_so_far, current, path = heapq.heappop(open_set)
+            print(f"[DEBUG] Visiting node {current} with cost so far {cost_so_far} and estimated total cost {est_total_cost}")
 
             # Check if reached goal
             if current == goal:
+                print(f"[DEBUG] Goal reached! Path: {path}")
                 return path
 
             if current in visited:
+                print(f"[DEBUG] Node {current} already visited, skipping")
                 continue
             visited.add(current)
 
             for neighbor in self.maze.get_neighbors(current):
                 if neighbor in visited:
+                    print(f"[DEBUG] Neighbor {neighbor} already visited, skipping")
                     continue
                 # Skip neighbors that are walls or dynamic obstacles ('1')
                 if self.maze.grid[neighbor[0]][neighbor[1]] == '1':
+                    print(f"[DEBUG] Neighbor {neighbor} is a wall or obstacle, skipping")
                     continue
                 new_cost = cost_so_far + 1
                 est_total = new_cost + self.heuristic(neighbor, goal)
+                print(f"[DEBUG] Adding neighbor {neighbor} to open set with new cost {new_cost} and est total {est_total}")
                 heapq.heappush(open_set, (est_total, new_cost, neighbor, path + [neighbor]))
 
         # No path found
+        print("[DEBUG] No path found by A*")
         return []
 
     def move_step(self):
@@ -71,14 +81,18 @@ class Agent:
         """
         # If no path or already at goal, find new path
         if not self.path or self.position == self.maze.goal:
+            print("[DEBUG] No existing path or goal reached, planning new path...")
             self.path = self.a_star_search()
             if not self.path:
+                print("[DEBUG] No path found, agent is stuck")
                 return False  # No path found, stuck
 
         # Move to next position in path if possible
         if len(self.path) > 1:
+            print(f"[DEBUG] Moving from {self.position} to {self.path[1]}")
             self.position = self.path[1]
             self.path = self.path[1:]  # Update path removing current step
             return True
         else:
+            print("[DEBUG] No more steps to move, agent may have reached the goal")
             return False
