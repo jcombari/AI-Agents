@@ -10,12 +10,12 @@ Un agente inteligente que navega laberintos utilizando el algoritmo de búsqueda
 
 - Uses A* algorithm to find the shortest path through the maze  
 - Maze represented as a simple matrix for easy modification  
-- Visual step-by-step animation in terminal showing the agent's movement (`A`)  
+- Step-by-step output showing the agent's path  
 - Planned: Q-learning agent that learns optimal paths by trial and error
 
 - Utiliza el algoritmo A* para encontrar la ruta más corta en el laberinto  
 - Laberinto representado como matriz simple para fácil modificación  
-- Animación paso a paso en la terminal mostrando el movimiento del agente (`A`)  
+- Salida paso a paso mostrando la ruta del agente  
 - Próximamente: agente Q-learning que aprende rutas óptimas por prueba y error
 
 ---
@@ -34,7 +34,13 @@ Un agente inteligente que navega laberintos utilizando el algoritmo de búsqueda
 
         python main.py
 
-4. Observe the step-by-step animation in terminal showing the agent (`A`) moving through the maze.
+4. Observe the output showing the path found by the agent:
+
+        Path found:
+        (0, 0)
+        (0, 1)
+        (1, 1)
+        ...
 
 5. Customize the maze layout inside `main.py` to test different mazes. Use the legend:
 
@@ -79,12 +85,12 @@ Es autónomo y racional — planea con anticipación y adapta sus decisiones din
 
 ## 📂 Project files / Archivos del proyecto
 
-| File             | Description                      | Descripción                              |
-|------------------|----------------------------------|------------------------------------------|
-| `main.py`        | Maze setup, visualization, and execution | Configuración del laberinto, visualización y ejecución del agente |
-| `astar_agent.py` | A* pathfinding algorithm          | Algoritmo de búsqueda A*                  |
-| `maze.py`        | Maze representation and helpers   | Representación del laberinto y funciones auxiliares |
-| `README.md`      | This guide                        | Esta guía                                 |
+| File             | Description                     | Descripción                         |
+|------------------|---------------------------------|-----------------------------------|
+| `main.py`        | Maze setup and agent execution   | Configuración del laberinto y ejecución del agente |
+| `astar_agent.py` | A* pathfinding algorithm         | Algoritmo de búsqueda A*           |
+| `maze.py`        | Maze representation and helpers | Representación del laberinto y funciones auxiliares |
+| `README.md`      | This guide                      | Esta guía                         |
 
 ---
 
