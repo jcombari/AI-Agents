@@ -5,9 +5,9 @@ A growing collection of intelligent agents developed for various environments an
 ## 📦 Projects Included
 
 - 🎮 **tic-tac-toe** – 🎯 Minimax-powered agent that plays Tic-Tac-Toe  
-- 🧠 **maze-solver** – 🗺️ Pathfinding agent using A* or Q-learning *(coming soon)*  
+- 🚶🔀 **maze-solver** – 🗺️ Pathfinding agent using A* or Q-learning *(coming soon)*  
 - 💰 **stock-trader** – 📊 Rule-based trading agent simulation *(coming soon)*  
-- 🤖 **vacuum-cleaner** – 🧼 Reflex agent that cleans a 2D environment *(coming soon)*
+- 🤖 **vacuum-cleaner** –  Reflex agent that cleans a 2D environment *(coming soon)*
 
 ## 🤔 What’s an AI Agent?
 
